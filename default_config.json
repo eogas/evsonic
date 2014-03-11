@@ -1,0 +1,9 @@
+{
+	"db_name": "evsonic",
+	"db_user": "evsonic",
+	"db_pass": "evsonic",
+	"port": "8080",
+	"session_secret": "superSecretSecretChangeThis",
+	"bcrypt_cost": 12,
+	"dev": false
+}

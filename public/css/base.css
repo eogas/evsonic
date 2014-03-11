@@ -1,0 +1,38 @@
+.logo {
+	color: #444;
+}
+
+.logo:hover {
+	color: black;
+	text-decoration: none;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto -32px;
+	padding: 0 0 60px;
+	width: 960px;
+}
+
+#footer {
+	height: 32px;
+}
+
+.footer-text {
+	font-size: small;
+	color: #bbb;
+	text-align: center;
+	margin: 1em;
+}
+
+.centered-form {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
