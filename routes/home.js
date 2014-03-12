@@ -1,6 +1,10 @@
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
-		res.render('home.html', {});
+		if (req.user) {
+			res.redirect('/home');
+		} else {
+			res.render('login.html', {});
+		}
 	});
 };

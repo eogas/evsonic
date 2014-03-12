@@ -13,6 +13,23 @@ module.exports = function(app) {
 
 			// set up models
 			models.User = require('./user.js')(db);
+
+			// set up relations
+			for (var model in models) {
+				if (models[model].setRelations) {
+					models[model].setRelations(models);
+				}
+			}
+
+			// synchronize models to create tables
+			db.sync(function(err) {
+				console.log(err || 'ORM: tables synchronized!');
+			});
+
+			// export the models
+			for (model in models) {
+				module.exports[model] = models[model];
+			}
 		}
 	}));
 };
