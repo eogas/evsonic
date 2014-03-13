@@ -14,9 +14,31 @@
 	</head>
 	<body>
 		<div id="wrap" class="container">
-			<h1 class='col-md-12'>
-				<a href="/" class="logo">evsonic.</a>
-			</h1>
+			<div class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/">evsonic.</a>
+					</div>
+					{% if user %}
+					<ul class="nav navbar-nav">
+						<li {% if tab == "music" %}class="active"{% endif %}>
+							<a href="/music">music</a>
+						</li>
+						<li {% if tab == "video" %}class="active"{% endif %}>
+							<a href="/video">video</a>
+						</li>
+						<li {% if tab == "settings" %}class="active"{% endif %}>
+							<a href="/settings">settings</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="/logout">logout</a>
+						</li>
+					</ul>
+					{% endif %}
+				</div>
+			</div>
 
 			<div class='col-md-12 col-xs-12'>
 				{% block main %}
