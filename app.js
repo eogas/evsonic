@@ -4,7 +4,7 @@ var config = require('./config.js');
 var express = require('express'),
     app = express(),
     swig = require('swig'),
-    passport = require('passport')
+    passport = require('passport');
 
 var models = require('./models')(app);
 

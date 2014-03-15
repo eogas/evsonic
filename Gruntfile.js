@@ -6,12 +6,16 @@ module.exports = function(grunt) {
             options: {
                 flags: [
                     '--nojsdoc',
+                    '--max_line_length 100',
                     '-e "node_modules,public"',
                     '-r .'
                 ],
                 reporter: {
                     name: 'console'
                 }
+            },
+            main: {
+                src: ['*.js']
             }
         }
     });
