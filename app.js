@@ -2,9 +2,9 @@
 var config = require('./config.js');
 
 var express = require('express'),
-	app = express(),
-	swig = require('swig'),
-	passport = require('passport');
+    app = express(),
+    swig = require('swig'),
+    passport = require('passport')
 
 var models = require('./models')(app);
 
@@ -27,11 +27,11 @@ app.set('view cache', false);
 
 // disable view caching in dev mode
 if (config.dev) {
-	swig.setDefaults({ cache: false });
+    swig.setDefaults({ cache: false });
 }
 
 var auth = require('./auth'),
-	routes = require('./routes')(app);
+    routes = require('./routes')(app);
 
 app.listen(config.port);
 console.log('Listening on port ' + config.port + '...');

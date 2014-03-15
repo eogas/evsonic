@@ -1,12 +1,12 @@
 
 module.exports = function(db) {
-	var User = db.define('user', {
-		username: String,
-		password: String
-	});
+    var User = db.define('user', {
+        username: String,
+        password: String
+    });
 
-	User.setRelations = function(relModels) {
-	};
+    User.setRelations = function(relModels) {
+    };
 
-	return User;
+    return User;
 };
