@@ -14,6 +14,7 @@ module.exports = function(app) {
 
             // set up models
             models.User = require('./user.js')(db);
+            models.MediaDir = require('./mediadir.js')(db);
 
             // set up relations
             for (var model in models) {
