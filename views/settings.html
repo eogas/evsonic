@@ -2,6 +2,38 @@
 
 {% block main %}
 
-Settings go here
+<div class="panel panel-primary">
+	<div class="panel-heading">Media Directories</div>
+	<div class="panel-body mediadir-panel">
+		<form class="form-inline" role="form">
+			<div class="col-md-3">
+				<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Name">
+			</div>
+			<div class="col-md-7">
+				<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Path">
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-default">Add</button>
+			</div>
+		</form>
+
+		<div class="col-md-12">
+			<div id="media-dirs" class="list-group">
+				<div class="list-group-item">
+					<strong>Music: </strong>F:\music
+					<div class="pull-right glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="list-group-item">
+					<strong>Movies: </strong>F:\video\movies
+					<div class="pull-right glyphicon glyphicon-remove"></div>
+				</div>
+				<div class="list-group-item">
+					<strong>Shows: </strong>F:\video\shows
+					<div class="pull-right glyphicon glyphicon-remove"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% endblock %}

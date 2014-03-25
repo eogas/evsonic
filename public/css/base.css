@@ -43,3 +43,22 @@ form {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+
+.mediadir-panel .form-control,
+.mediadir-panel .btn {
+	width: 100%;
+}
+
+.mediadir-panel .list-group {
+	margin-top: 20px;
+}
+
+#media-dirs .glyphicon-remove {
+	color: #D00;
+	cursor: pointer;
+	font-size: 1.2em;
+}
+
+#media-dirs .glyphicon-remove:hover{
+	color: #B00;
+}
