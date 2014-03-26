@@ -48,4 +48,25 @@ module.exports = function(app) {
             });
         });
     });
+
+    app.delete('/mediadir/:id', function(req, res) {
+        var id = req.params.id;
+
+        req.models.MediaDir.get(id, function(err, mediaDir) {
+            if (err) {
+                console.log(err);
+                res.send(500);
+                return;
+            }
+
+            mediaDir.remove(function(err) {
+                if (err) {
+                    res.send(500);
+                    return;
+                }
+
+                res.send(200);
+            });
+        });
+    });
 };
