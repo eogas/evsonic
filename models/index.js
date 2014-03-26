@@ -26,30 +26,31 @@ module.exports = function(app) {
             // synchronize models to create tables
             db.sync(function(err) {
                 console.log(err || 'ORM: tables synchronized!');
-            });
 
-            // create the admin user if it doesn't exist already
-            models.User.find({
-                username: 'admin'
-            }, function(err, users) {
-                if (users.length < 1) {
-                    bcrypt.hash(config.default_admin_pass, config.bcrypt_cost, function(err, hash) {
-                        if (err) {
-                            console.log(err);
-                            return;
-                        }
-
-                        // all is well, create the user
-                        models.User.create([{
-                            username: 'admin',
-                            password: hash
-                        }], function(err, newUsers) {
+                // create the admin user if it doesn't exist already
+                models.User.exists({
+                    username: 'admin'
+                }, function(err, exists) {
+                    if (!exists) {
+                        bcrypt.hash(config.default_admin_pass, config.bcrypt_cost,
+                        function(err, hash) {
                             if (err) {
                                 console.log(err);
+                                return;
                             }
+
+                            // all is well, create the user
+                            models.User.create([{
+                                username: 'admin',
+                                password: hash
+                            }], function(err, newUsers) {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            });
                         });
-                    });
-                }
+                    }
+                });
             });
 
             // export the models
