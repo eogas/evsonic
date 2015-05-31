@@ -10,7 +10,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session');
 
-//var models = require('./models')(app);
+var models = require('./models')(app);
 
 // express config
 app.use(express.static(__dirname + '/public'));
