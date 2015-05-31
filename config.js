@@ -3,6 +3,7 @@ var fs = require('fs'),
     defaultConfigPath = './default_config.json',
     configPath = './config.json',
     configRaw,
+    defaultConfig,
     config,
     changed = false;
 

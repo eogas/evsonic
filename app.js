@@ -1,22 +1,31 @@
+/// <reference path="typings/node/node.d.ts"/>
 
 var config = require('./config.js');
 
 var express = require('express'),
     app = express(),
     swig = require('swig'),
-    passport = require('passport');
+    passport = require('passport'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session');
 
-var models = require('./models')(app);
+//var models = require('./models')(app);
 
 // express config
 app.use(express.static(__dirname + '/public'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.cookieParser());
-app.use(express.session({ secret: config.session_secret }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(cookieParser());
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: config.session_secret
+}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(app.router);
 
 // integrate swig into express
 app.engine('html', swig.renderFile);

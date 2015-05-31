@@ -1,19 +1,31 @@
 {
   "name": "evsonic",
-  "description": "A ripoff of subsonic in nodejs with express",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "express": "~3.4.8",
-    "orm": "~2.1.3",
-    "swig": "~1.3.2",
-    "mysql": "~2.0.1",
-    "passport": "~0.2.0",
-    "passport-local": "~0.1.6",
-    "bcrypt": "~0.7.7"
+  "version": "1.0.0",
+  "description": "evsonic =======",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "grunt": "~0.4.4",
-    "grunt-gjslint": "~0.1.4"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eogas/evsonic.git"
+  },
+  "author": "Evan J. Ogas",
+  "license": "Zlib",
+  "bugs": {
+    "url": "https://github.com/eogas/evsonic/issues"
+  },
+  "homepage": "https://github.com/eogas/evsonic#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.3",
+    "body-parser": "^1.12.4",
+    "cookie-parser": "^1.3.5",
+    "express": "^4.12.4",
+    "express-session": "^1.11.2",
+    "mysql": "^2.7.0",
+    "orm": "^2.1.26",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "swig": "^1.4.2"
   }
 }
