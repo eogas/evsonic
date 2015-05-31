@@ -1,6 +1,6 @@
 
 var passport = require('passport'),
-    bcrypt = require('bcrypt'),
+    bcrypt = require('bcryptjs'),
     models = require('../models'),
     config = require('../config');
 

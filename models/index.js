@@ -1,6 +1,6 @@
 
 var orm = require('orm'),
-    bcrypt = require('bcrypt'),
+    bcrypt = require('bcryptjs'),
     config = require('../config');
 
 module.exports = function(app) {
