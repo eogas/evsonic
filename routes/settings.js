@@ -4,7 +4,7 @@ module.exports = function(app) {
         if (req.user) {
             req.models.MediaDir.find({}, function(err, dirs) {
                 if (err) {
-                    res.send(500);
+                    res.sendStatus(500);
                     return;
                 }
 

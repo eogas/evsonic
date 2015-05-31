@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "closure-linter-wrapper": "^0.2.11",
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "grunt-gjslint": "^0.1.6"
   }
 }
