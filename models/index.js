@@ -1,14 +1,17 @@
 
-var orm = require('orm'),
+var util = require('util'),
+    orm = require('orm'),
     bcrypt = require('bcryptjs'),
     config = require('../config');
 
 module.exports = function(app) {
     app.use(orm.express(
-        'mysql://' +
-        config.db_user + ':' + config.db_pass +
-        '@localhost/' + config.db_name, {
-
+        util.format('mysql://%s:%s@%s/%s',
+        config.db_user,
+        config.db_pass,
+        config.db_host,
+        config.db_name), {
+ 
         define: function(db, models) {
             db.settings.set('instance.autoFetchLimit', 2);
 
@@ -31,25 +34,28 @@ module.exports = function(app) {
                 models.User.exists({
                     username: 'admin'
                 }, function(err, exists) {
-                    if (!exists) {
-                        bcrypt.hash(config.default_admin_pass, config.bcrypt_cost,
-                        function(err, hash) {
+                    if (exists) {
+                        // admin user already exists, exit
+                        return;
+                    }
+
+                    bcrypt.hash(config.default_admin_pass, config.bcrypt_cost,
+                    function(err, hash) {
+                        if (err) {
+                            console.log(err);
+                            return;
+                        }
+
+                        // all is well, create the user
+                        models.User.create([{
+                            username: 'admin',
+                            password: hash
+                        }], function(err, newUsers) {
                             if (err) {
                                 console.log(err);
-                                return;
                             }
-
-                            // all is well, create the user
-                            models.User.create([{
-                                username: 'admin',
-                                password: hash
-                            }], function(err, newUsers) {
-                                if (err) {
-                                    console.log(err);
-                                }
-                            });
                         });
-                    }
+                    });
                 });
             });
 
