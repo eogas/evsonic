@@ -25,8 +25,7 @@
     "mysql": "^2.7.0",
     "orm": "^2.1.26",
     "passport": "^0.2.2",
-    "passport-local": "^1.0.0",
-    "swig": "^1.4.2"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "closure-linter-wrapper": "^0.2.11",

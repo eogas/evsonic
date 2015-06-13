@@ -1,7 +1,66 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html ng-app="evsonic">
+	<head>
+		<meta charset="UTF-8">
+		<title>evsonic.</title>
+		
+		<base href="/" />
 
-{% block main %}
+		<!-- jquery -->
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-Hello, world!
+		<!-- angularjs minified -->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-resource.min.js"></script>-->
+		
+		<!-- angularjs full -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-route.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular-resource.js"></script>
 
-{% endblock %}
+		<!-- twitter bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="/css/base.css">
+		<script src="/js/main.js"></script>
+	</head>
+	<body ng-controller='EvsonicCtrl'>
+		<div id="wrap" class="container">
+			<div class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/">evsonic.</a>
+					</div>
+					
+					<ul class="nav navbar-nav">
+						<li ng-class="{active: state.activeTab == 'music'}">
+							<a href="/music">music</a>
+						</li>
+						<li ng-class="{active: state.activeTab == 'video'}">
+							<a href="/video">video</a>
+						</li>
+						<li ng-class="{active: state.activeTab == 'settings'}">
+							<a href="/settings">settings</a>
+						</li>
+					</ul>
+					
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href ng-click="logout()">logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class='col-md-12 col-xs-12'>
+				<ng-view />
+			</div>
+		</div>
+		<div id="footer">
+			<p class="footer-text">&copy; 2014 Evan J Ogas. All rights reserved.</p>
+		</div>
+	</body>
+</html>

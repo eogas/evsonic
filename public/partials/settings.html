@@ -1,0 +1,37 @@
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Media Directories</div>
+	<div class="panel-body mediadir-panel">
+		<form class="form-inline" role="form">
+			<div class="col-md-3">
+				<input ng-model="newdir.name" type="text" class="form-control" placeholder="Name" />
+			</div>
+			<div class="col-md-7">
+				<input ng-model="newdir.path" type="text" class="form-control" placeholder="Path" />
+			</div>
+			<div class="col-md-2">
+				<button ng-click="add(newdir)" type="button" class="btn btn-default">Add</button>
+			</div>
+		</form>
+
+		<div id="mediadir-alert-container" class="col-md-12">
+			<div ng-if="lastError" class="alert alert-danger alert-dismissable">
+				<button ng-click="dismissError()" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Error!</strong> {{ lastError }}
+			</div>
+			<div ng-if="lastSuccess" class="alert alert-success alert-dismissable">
+				<button ng-click="dismissSuccess()" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Success!</strong> {{ lastSuccess }}
+			</div>
+		</div>
+
+		<div class="col-md-12">
+			<div ng-repeat="dir in mediadirs" id="media-dirs" class="list-group">
+				<div data-id="{{ dir.id }}" class="list-group-item" >
+					<strong>{{ dir.name }} </strong>{{ dir.path }}
+					<div ng-click="delete(dir)" class="pull-right glyphicon glyphicon-remove" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -49,10 +49,6 @@ form {
 	width: 100%;
 }
 
-.mediadir-panel .list-group {
-	margin-top: 20px;
-}
-
 #media-dirs .glyphicon-remove {
 	color: #D00;
 	cursor: pointer;
@@ -61,4 +57,8 @@ form {
 
 #media-dirs .glyphicon-remove:hover{
 	color: #B00;
+}
+
+#mediadir-alert-container {
+	margin-top: 10px;
 }

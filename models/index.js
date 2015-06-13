@@ -11,7 +11,7 @@ module.exports = function(app) {
         config.db_pass,
         config.db_host,
         config.db_name), {
- 
+
         define: function(db, models) {
             db.settings.set('instance.autoFetchLimit', 2);
 

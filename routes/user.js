@@ -5,7 +5,7 @@ var passport = require('passport'),
     config = require('../config');
 
 module.exports = function(app) {
-    app.post('/register', function(req, res) {
+    app.post('/user', function(req, res) {
         var username = req.body.regUsername,
             password = req.body.regPassword,
             repeatedPass = req.body.regRepeatedPass;
