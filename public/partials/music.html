@@ -1,4 +1,4 @@
 
-<div>
-	<p>Music goes here.</p>
+<div ng-repeat="mediainfo in mediainfos">
+	<a href ng-click="playsong(mediainfo)">{{mediainfo.filepath}}</a>
 </div>

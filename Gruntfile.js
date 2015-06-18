@@ -2,6 +2,19 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        trimtrailingspaces: {
+            main: {
+                src: [
+                    '**/*.js',
+                    '!**/node_modules/**'
+                ],
+                options: {
+                    filter: 'isFile',
+                    encoding: 'utf8',
+                    failIfTrimmed: false
+                }
+            }
+        },
         gjslint: {
             options: {
                 flags: [
@@ -20,7 +33,11 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-trimtrailingspaces');
     grunt.loadNpmTasks('grunt-gjslint');
 
-    grunt.registerTask('default', ['gjslint']);
+    grunt.registerTask('default', [
+        'trimtrailingspaces',
+        'gjslint'
+    ]);
 };

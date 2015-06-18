@@ -6,4 +6,5 @@ module.exports = function(app) {
 
     // other routes
     exports.mediadir = require('./mediadir.js')(app);
+    exports.mediainfo = require('./mediainfo.js')(app);
 };
