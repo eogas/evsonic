@@ -1,4 +1,9 @@
 
+<div>
+    <audio ng-if="nowPlayingUrl" src="{{nowPlayingUrl}}" controls autoplay="true">
+    </audio>
+</div>
+
 <div ng-repeat="mediainfo in mediainfos">
-	<a href ng-click="playsong(mediainfo)">{{mediainfo.filepath}}</a>
+    <a href ng-click="playsong(mediainfo)">{{mediainfo.filepath}}</a>
 </div>

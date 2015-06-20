@@ -21,7 +21,8 @@ module.exports = function(app) {
                     files.forEach(function(file) {
                         if (FILE_TYPES.indexOf(path.extname(file).toUpperCase()) != -1) {
                             allFiles.push({
-                                filepath: path.join(dir.path, file)
+                                filepath: file,
+                                mediaDirId: dir.id
                                 // TODO - ID3 info
                             });
                         }

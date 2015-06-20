@@ -43,8 +43,10 @@ app.controller('MusicCtrl', function ($scope, $controller, $resource) {
 	// fetch all media dirs
 	$scope.mediainfos = MediaInfo.query();
 
+    $scope.nowPlayingUrl = '';
+
 	$scope.playsong = function(minfo) {
-		alert('now playing ' + minfo.filepath);
+        $scope.nowPlayingUrl = 'mediafile' + '/' + minfo.mediaDirId + '/' + minfo.filepath;
 	};
 });
 
