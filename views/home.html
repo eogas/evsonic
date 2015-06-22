@@ -47,6 +47,11 @@
 						</li>
 					</ul>
 					
+                    <div class="nav navbar-left">
+                        <audio ng-if="nowPlayingUrl" src="{{nowPlayingUrl}}" controls autoplay="true">
+                        </audio>
+                    </div>
+                    
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href ng-click="logout()">logout</a>

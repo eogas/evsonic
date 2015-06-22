@@ -32,6 +32,10 @@ app.controller('EvsonicCtrl', function ($scope, $http) {
 			window.location.href = '/';
 		});
 	};
+
+	$scope.playsong = function(minfo) {
+        $scope.nowPlayingUrl = 'mediafile' + '/' + minfo.mediaDirId + '/' + minfo.filepath;
+	};
 });
 
 // TODO can we move these controllers into their own files?
@@ -44,10 +48,6 @@ app.controller('MusicCtrl', function ($scope, $controller, $resource) {
 	$scope.mediainfos = MediaInfo.query();
 
     $scope.nowPlayingUrl = '';
-
-	$scope.playsong = function(minfo) {
-        $scope.nowPlayingUrl = 'mediafile' + '/' + minfo.mediaDirId + '/' + minfo.filepath;
-	};
 });
 
 app.controller('VideoCtrl', function ($scope, $controller) {
