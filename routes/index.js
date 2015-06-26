@@ -1,3 +1,4 @@
+/// <reference path="../typings/node/node.d.ts"/>
 
 module.exports = function(app) {
     // session/auth routes

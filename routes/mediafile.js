@@ -1,5 +1,6 @@
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    util = require('util');
 
 module.exports = function(app) {
     app.get('/mediafile/:id/:filename', function(req, res) {
@@ -15,17 +16,46 @@ module.exports = function(app) {
                 return;
             }
 
-            // http://stackoverflow.com/a/10047018
             var filepath = path.join(mediaDir.path, filename);
             var stat = fs.statSync(filepath);
+            var totalSize = stat.size;
+            var range = req.headers['range'];
 
-            res.writeHead(200, {
-               'Content-Type': 'audio/mpeg', // figure this out from file format
-               'Content-Length': stat.size
-            });
+            // http://stackoverflow.com/a/10047018
+            // https://gist.github.com/paolorossi/1993068
+            if (range) {
+                var bounds = range.replace(/bytes=/, '').split('-');
+                var rangeStart = bounds[0];
+                var rangeEnd = bounds[1];
 
-            var readStream = fs.createReadStream(filepath);
-            readStream.pipe(res);
+                var start = parseInt(rangeStart, 10);
+                var end = rangeEnd ? parseInt(rangeEnd, 10) : totalSize - 1;
+                var contentLength = (end - start) + 1;
+
+                var file = fs.createReadStream(filepath, {
+                    start: start,
+                    end: end
+                });
+
+                var contentRange = util.format('bytes %d-%d/%d ', start, end, totalSize);
+
+                res.writeHead(206, {
+                    'Content-Range': contentRange,
+                    'Accept-Ranges': 'bytes',
+                    'Content-Type': 'audio/mpeg', // figure this out from file format
+                    'Content-Length': contentLength
+                });
+
+                file.pipe(res);
+            }
+            else {
+                res.writeHead(200, {
+                   'Content-Type': 'audio/mpeg', // figure this out from file format
+                   'Content-Length': totalSize
+                });
+
+                fs.createReadStream(filepath).pipe(res);
+            }
         });
     });
 };

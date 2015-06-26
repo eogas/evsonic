@@ -1,3 +1,4 @@
+/// <reference path="../typings/node/node.d.ts"/>
 
 var util = require('util'),
     orm = require('orm'),
