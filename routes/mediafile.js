@@ -1,3 +1,5 @@
+/// <reference path="../typings/node/node.d.ts"/>
+
 var fs = require('fs'),
     path = require('path'),
     util = require('util');
@@ -17,6 +19,13 @@ module.exports = function(app) {
             }
 
             var filepath = path.join(mediaDir.path, filename);
+
+            if (!fs.existsSync(filepath)) {
+                res.status(500).
+                send('Directory not found.');
+                return;
+            }
+
             var stat = fs.statSync(filepath);
             var totalSize = stat.size;
             var range = req.headers['range'];
@@ -31,13 +40,12 @@ module.exports = function(app) {
                 var start = parseInt(rangeStart, 10);
                 var end = rangeEnd ? parseInt(rangeEnd, 10) : totalSize - 1;
                 var contentLength = (end - start) + 1;
+                var contentRange = util.format('bytes %d-%d/%d ', start, end, totalSize);
 
                 var file = fs.createReadStream(filepath, {
                     start: start,
                     end: end
                 });
-
-                var contentRange = util.format('bytes %d-%d/%d ', start, end, totalSize);
 
                 res.writeHead(206, {
                     'Content-Range': contentRange,
