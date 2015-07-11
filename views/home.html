@@ -46,12 +46,6 @@
 							<a href="/settings">settings</a>
 						</li>
 					</ul>
-					
-                    <div class="nav navbar-left">
-                        <audio ng-if="nowPlayingUrl" src="{{nowPlayingUrl}}"
-                            controls autoplay="true" preload="none">
-                        </audio>
-                    </div>
                     
 					<ul class="nav navbar-nav navbar-right">
 						<li>
@@ -60,7 +54,13 @@
 					</ul>
 				</div>
 			</div>
-
+            
+			<div class='col-md-12 col-xs-12'>
+                <audio ng-if="nowPlayingUrl" src="{{nowPlayingUrl}}"
+                    controls autoplay="true" preload="none">
+                </audio>
+            </div>
+            
 			<div class='col-md-12 col-xs-12'>
 				<ng-view />
 			</div>
